@@ -57,7 +57,7 @@ echo "Creating Keys"
 sudo mkdir -p /opt/secrets
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /opt/secrets/ssl_key -out /opt/secrets/ssl_crt "/C=BR /ST=SP /L=SP /O=Personal /OU=Personal /CN=Helix"
 
-if (( $type -eq 2 ))
+if [[ $type -eq 2 ]]
 then
   echo "Installing Helix Sandbox with MQTT"
   git clone https://github.com/fabiocabrini/Helix_IoT_MQTT.git
