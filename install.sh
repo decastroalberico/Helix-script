@@ -6,7 +6,7 @@ clear				# clear terminal window
 echo "Updating Ubuntu"
 echo
 
-sudo apt update
-sudo apt upgrade
+sudo apt -y update
+sudo apt -y upgrade
 
 echo "Ubuntu is updated!"
