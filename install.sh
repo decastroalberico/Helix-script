@@ -4,18 +4,13 @@
 clear				# clear terminal window
 
 echo "Updating Ubuntu"
-echo
 
 sudo apt -y update
 sudo apt -y upgrade
 
 echo "Ubuntu is updated!"
 
-echo
-
 echo "Installing Docker Engine and Docker compose."
-
-echo
 
 # Install prerequisites
 sudo apt-get -y update
@@ -41,4 +36,24 @@ sudo systemctl start docker
 
 echo "Docker Engine and Docker compose installed with success."
 
-echo
+echo "Pulling Docker Images"
+
+sudo docker pull mongo:3.4
+sudo docker pull fiware/orion:latest
+sudo docker pull fiware/cygnus-ngsi:1.9.0
+sudo docker pull m4n3dw0lf/dtls-lightweightm2m-iotagent
+
+echo "Images pulled with success"
+
+echo "Creating Keys"
+sudo mkdir -p /opt/secrets
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /opt/secrets/ssl_key -out /opt/secrets/ssl_crt
+
+echo "Installing Helix Sandbox"
+
+git clone https://github.com/fabiocabrini/helix-sandbox.git
+cd helix-sandbox/compose
+echo "put_here_your_encryption_key" > secrets/aes_key.txt
+sudo docker-compose up -d
+
+echo "Helix installed with success"
