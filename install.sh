@@ -63,6 +63,7 @@ then
   git clone https://github.com/fabiocabrini/Helix_IoT_MQTT.git
   cd Helix_IoT_MQTT
   sudo docker-compose up -d
+  echo "MQTT"
 
 else
   echo "Installing Helix Sandbox with COaP"
@@ -71,6 +72,7 @@ else
   cd helix-sandbox/compose
   echo "put_here_your_encryption_key" > secrets/aes_key.txt
   sudo docker-compose up -d
+  echo "Coap"
 fi
 
 echo "Helix installed with success"
