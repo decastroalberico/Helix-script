@@ -3,6 +3,14 @@
 
 clear				# clear terminal window
 
+echo "Welcome to Helix Sandbox Intallation, please chose between one of the following options for proceeding with instalation."
+
+echo
+
+echo "Type [1] for install helix with COaP or type [2] for installing Helix with MQTT"
+
+read type
+
 echo "Updating Ubuntu"
 
 sudo apt -y update
@@ -49,11 +57,20 @@ echo "Creating Keys"
 sudo mkdir -p /opt/secrets
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /opt/secrets/ssl_key -out /opt/secrets/ssl_crt "/C=BR /ST=SP" /L="SP" /O=Personal /OU=Personal /CN=Helix"
 
-echo "Installing Helix Sandbox"
+if (( $type -eq 2 ))
+then
+  echo "Installing Helix Sandbox with MQTT"
+  git clone https://github.com/fabiocabrini/Helix_IoT_MQTT.git
+  cd Helix_IoT_MQTT
+  sudo docker-compose up -d
 
-git clone https://github.com/fabiocabrini/helix-sandbox.git
-cd helix-sandbox/compose
-echo "put_here_your_encryption_key" > secrets/aes_key.txt
-sudo docker-compose up -d
+else
+  echo "Installing Helix Sandbox with COaP"
+
+  git clone https://github.com/fabiocabrini/helix-sandbox.git
+  cd helix-sandbox/compose
+  echo "put_here_your_encryption_key" > secrets/aes_key.txt
+  sudo docker-compose up -d
+fi
 
 echo "Helix installed with success"
