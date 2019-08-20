@@ -64,9 +64,10 @@ then
   cd Helix_IoT_MQTT
   echo "Enter the IP address of the server"
   read MYIP
+  MYIP2 = 'hostname -I'
   MYIPPORT='$MYIP'":4041"
   MYIPAdd='$MYIP'":4041/iot/about || exit 1"
-  sed -i 's/IOTA_CB_HOST=.*/IOTA_CB_HOST=$MYIP/' docker-compose.yml
+  sed -i 's/IOTA_CB_HOST=.*/IOTA_CB_HOST=$MYIP2/' docker-compose.yml
   sed -i 's/IOTA_PROVIDER_URL=http://.*/IOTA_CB_HOST=MYIPPORT/' docker-compose.yml
   sed -i 's/curl --fail -s http://.*/IOTA_CB_HOST=MYIPPORT/' docker-compose.yml
   sudo docker-compose up -d
