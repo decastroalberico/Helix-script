@@ -105,7 +105,7 @@ then
   echo '      - IOTA_MQTT_HOST=mosquitto # The host name of the MQTT Broker' >> docker-compose.yml
   echo '      - IOTA_MQTT_PORT=1883 # The port the MQTT Broker is listening on to receive topics' >> docker-compose.yml
   echo '  #   - IOTA_DEFAULT_RESOURCE=' >> docker-compose.yml
-  echo '      - IOTA_PROVIDER_URL=http://$MYIPlocal :4041 #Put Helix IoT IP here' >> docker-compose.yml
+  echo '      - IOTA_PROVIDER_URL=http://$MYIPlocal:4041 #Put Helix IoT IP here' >> docker-compose.yml
   echo '    healthcheck:' >> docker-compose.yml
   echo '      test: curl --fail -s http://$MYIPlocal:4041/iot/about || exit 1 #Put Helix IoT IP here' >> docker-compose.yml
   echo ' >> docker-compose.yml
