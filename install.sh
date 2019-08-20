@@ -91,7 +91,7 @@ then
   echo '    ports:' >> docker-compose.yml
   echo '      - "4041:4041"' >> docker-compose.yml
   echo '    environment:' >> docker-compose.yml
-  echo '      - IOTA_CB_HOST=$MYIPlocal # Put Helix Sandbox IP here' >> docker-compose.yml
+  echo "      - IOTA_CB_HOST=$MYIPlocal # Put Helix Sandbox IP here" >> docker-compose.yml
   echo '      - IOTA_CB_PORT=1026 # port the context broker listens on to update context' >> docker-compose.yml
   echo '      - IOTA_NORTH_PORT=4041' >> docker-compose.yml
   echo '      - IOTA_REGISTRY_TYPE=mongodb #Whether to hold IoT device info in memory or in a database' >> docker-compose.yml
@@ -105,9 +105,9 @@ then
   echo '      - IOTA_MQTT_HOST=mosquitto # The host name of the MQTT Broker' >> docker-compose.yml
   echo '      - IOTA_MQTT_PORT=1883 # The port the MQTT Broker is listening on to receive topics' >> docker-compose.yml
   echo '  #   - IOTA_DEFAULT_RESOURCE=' >> docker-compose.yml
-  echo '      - IOTA_PROVIDER_URL=http://$MYIPlocal:4041 #Put Helix IoT IP here' >> docker-compose.yml
+  echo "      - IOTA_PROVIDER_URL=http://$MYIP:4041 #Put Helix IoT IP here" >> docker-compose.yml
   echo '    healthcheck:' >> docker-compose.yml
-  echo '      test: curl --fail -s http://$MYIPlocal:4041/iot/about || exit 1 #Put Helix IoT IP here' >> docker-compose.yml
+  echo "      test: curl --fail -s http://$MYIP:4041/iot/about || exit 1 #Put Helix IoT IP here" >> docker-compose.yml
   echo ' >> docker-compose.yml
   echo ' # Database' >> docker-compose.yml
   echo ' mongo-db:' >> docker-compose.yml
@@ -149,6 +149,8 @@ then
   echo '    mongo-db: ~' >> docker-compose.yml
   echo '' >> docker-compose.yml
 #finish creating docker-compose.yml
+
+chmod +x docker-compose.yml
 
   sudo docker-compose up -d
 
