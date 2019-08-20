@@ -62,6 +62,12 @@ then
   echo "Installing Helix Sandbox with MQTT"
   git clone https://github.com/fabiocabrini/Helix_IoT_MQTT.git
   cd Helix_IoT_MQTT
+  MYIP='hostname -I'
+  MYIPPORT='hostname -I'":4041"
+  MYIPAdd='hostname -I'":4041/iot/about || exit 1"
+  sed 's/\(IOTA_CB_HOST=\).*/\$MYIP/' docker-compose.yml
+  sed 's/\(IOTA_PROVIDER_URL=http://\).*/\$MYIPPORT/' docker-compose.yml
+  sed 's/\(curl --fail -s http://\).*/\$MYIPAdd/' docker-compose.yml
   sudo docker-compose up -d
 else
   echo "Installing Helix Sandbox with COaP"
