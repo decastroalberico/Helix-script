@@ -72,10 +72,10 @@ then
   echo '# and so on, purely so that a single docker-compose file can be read as an example to build on,' >> docker-compose.yml
   echo '# not use directly.' >> docker-compose.yml
   echo '# https://gethelix.org' >> docker-compose.yml
-  echo '' >> docker-compose.yml
+  echo '  ' >> docker-compose.yml
   echo 'version: "3.5"' >> docker-compose.yml
   echo 'services:' >> docker-compose.yml
-  
+  echo '  '
   echo '  # IoT-Agent is configured for the UltraLight Protocol' >> docker-compose.yml
   echo '  iot-agent:' >> docker-compose.yml
   echo '    image: fiware/iotagent-ul:1.8.0 # iotagent' >> docker-compose.yml
