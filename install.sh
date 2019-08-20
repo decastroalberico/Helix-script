@@ -108,7 +108,7 @@ then
   echo "      - IOTA_PROVIDER_URL=http://$MYIP:4041 #Put Helix IoT IP here" >> docker-compose.yml
   echo '    healthcheck:' >> docker-compose.yml
   echo "      test: curl --fail -s http://$MYIP:4041/iot/about || exit 1 #Put Helix IoT IP here" >> docker-compose.yml
-  echo ' >> docker-compose.yml
+  echo '' >> docker-compose.yml
   echo ' # Database' >> docker-compose.yml
   echo ' mongo-db:' >> docker-compose.yml
   echo '   image: mongo:3.6' >> docker-compose.yml
